@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace Fiorella\Jobs;
 
 use Illuminate\Bus\Queueable;
 

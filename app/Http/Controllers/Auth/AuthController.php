@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Fiorella\Http\Controllers\Auth;
 
-use App\User;
+use Fiorella\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Fiorella\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -22,6 +22,8 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+    protected $redirectPath = '/admin'; // Where to go after successful authentication
 
     /**
      * Create a new authentication controller instance.

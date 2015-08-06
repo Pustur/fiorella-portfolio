@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Fiorella\Events;
 
 abstract class Event
 {

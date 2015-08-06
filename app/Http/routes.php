@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+    return 'This is the home page'; // Temp
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+    Route::get('/', function(){
+        return 'This is the ADMIN page'; // Temp
+    });
+});
+
+// Authentication routes...
+Route::group(['prefix' => 'auth'], function(){
+    Route::get('login', 'Auth\AuthController@getLogin');
+    Route::post('login', 'Auth\AuthController@postLogin');
+    Route::get('logout', 'Auth\AuthController@getLogout');
 });

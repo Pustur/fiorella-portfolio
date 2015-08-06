@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Fiorella\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
