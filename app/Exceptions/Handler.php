@@ -5,6 +5,7 @@ namespace Fiorella\Exceptions;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -39,6 +40,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if($e instanceof ModelNotFoundException){
+            abort(404);
+        }
         return parent::render($request, $e);
     }
 }

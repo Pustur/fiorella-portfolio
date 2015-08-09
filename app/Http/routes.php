@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function(){
+Route::get('/', ['as' => 'home', function(){
     return 'This is the home page'; // Temp
-});
+}]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', function(){
         return 'This is the ADMIN page'; // Temp
     });
+    Route::resource('works', 'WorksController');
 });
 
 // Authentication routes...
