@@ -8,6 +8,7 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	autoprefixer = require('gulp-autoprefixer'),
 	uglify = require('gulp-uglify'),
+	concat = require('gulp-concat'),
 	imagemin = require('gulp-imagemin');
 
 var config = {
@@ -21,7 +22,7 @@ var config = {
 
 // Tasks
 gulp.task('css', function(){
-	gulp.src(config.src + config.sassPattern)
+	gulp.src(config.src + 'sass/app.sass')
 	.pipe(plumber())
 	.pipe(config.production ? util.noop() : sourcemaps.init())
 	.pipe(sass({
@@ -31,19 +32,17 @@ gulp.task('css', function(){
 		suffix: '.min'
 	}))
 	.pipe(autoprefixer({
-		browsers: ['last 3 versions']
+		browsers: ['last 5 versions']
 	}))
 	.pipe(config.production ? util.noop() : sourcemaps.write())
 	.pipe(gulp.dest(config.dest + 'css'))
 });
 
 gulp.task('js', function(){
-	gulp.src(config.src + config.jsPattern)
+	gulp.src([config.src + 'js/vendor/jquery.js', config.src + 'js/vendor/select2.js'])
 	.pipe(plumber())
+	.pipe(concat('app.min.js'))
 	.pipe(config.production ? uglify() : util.noop())
-	.pipe(rename({
-		suffix: '.min'
-	}))
 	.pipe(gulp.dest(config.dest + 'js'))
 });
 
