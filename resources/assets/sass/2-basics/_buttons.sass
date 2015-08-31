@@ -1,0 +1,36 @@
+.button
+    +colorize-link($gray-light, $gray-light, $gray-medium, $gray-medium, $gray-medium)
+    color: $gray-light
+    display: inline-block
+    height: 38px
+    line-height: 38px
+    padding: 0 $gutter
+    background-color: white
+    border: 1px solid $gray-lighter
+    border-radius: 4px
+    cursor: pointer
+
+.button:hover,
+.button:focus
+    border-color: $gray-light
+    outline: 0
+
+.button.button-primary
+    color: white
+    background-color: $primary
+    border-color: $primary
+
+.button.button-primary:hover,
+.button.button-primary:focus
+    background-color: $primary-light
+    border-color: $primary-light
+
+.button.button-danger
+    color: white
+    background-color: $danger-darker
+    border-color: $danger-darker
+
+.button.button-danger:hover,
+.button.button-danger:focus
+    background-color: $danger-dark
+    border-color: $danger-dark

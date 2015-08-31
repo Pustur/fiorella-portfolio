@@ -1,0 +1,35 @@
+.admin-body
+    padding: $gutter 0
+
+.home-button
+    +colorize-link($gray-light, $gray-light, $gray-medium, $gray-dark, $gray-medium)
+    display: inline-block
+    margin: 0 0 $gutter $gutter
+
+@media(min-width: rem-calc(940))
+    .home-button
+        position: fixed
+
+.admin-wrapper
+    max-width: rem_calc(768)
+    margin: 0 auto
+    padding: 0 $gutter
+
+.admin-list
+    list-style: none
+    padding: 0
+    margin: 0
+
+    & > li
+        margin-bottom: 0.25rem
+
+form > div
+    margin-bottom: $gutter
+
+.form-errors
+    margin: $gutter 0 0 0
+    padding: ($gutter / 2) ($gutter / 2) ($gutter / 2) ($gutter * 2)
+
+.timestamps
+    color: $gray-medium
+    font-family: monospace

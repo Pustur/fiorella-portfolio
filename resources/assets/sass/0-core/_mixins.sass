@@ -1,0 +1,16 @@
+=colorize-link($link, $visited, $hover, $active, $focus:"")
+    &:link
+        color: $link
+
+    &:visited
+        color: $visited
+
+    @if $focus != ""
+        &:focus
+            color: $focus
+
+    &:hover
+        color: $hover
+
+    &:active
+        color: $active
