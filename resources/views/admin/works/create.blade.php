@@ -18,7 +18,6 @@
 @stop
 
 @section('footer')
-	<script src="/js/app.min.js"></script>
 	<script>
 		$('#select2').select2({
 			tags: true

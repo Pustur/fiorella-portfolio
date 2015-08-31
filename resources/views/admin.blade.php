@@ -11,6 +11,12 @@
 				@yield('content')
 			</div>
 		</div>
+		<script src="/js/app.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('[data-element="flash-message"]').delay(3000).fadeOut();
+			});
+		</script>
 		@yield('footer')
 	</body>
 </html>
