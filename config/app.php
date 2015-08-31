@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Zurich',
 
     /*
     |--------------------------------------------------------------------------
@@ -144,6 +144,7 @@ return [
         Fiorella\Providers\AppServiceProvider::class,
         Fiorella\Providers\EventServiceProvider::class,
         Fiorella\Providers\RouteServiceProvider::class,
+        Fiorella\Providers\ViewComposerServiceProvider::class,
 
     ],
 

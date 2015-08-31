@@ -25,8 +25,8 @@ class WorksRequest extends Request
     {
         return [
             'title' => 'required',
-            'body' => 'required',
-            'image' => 'required'
+            'size' => 'required',
+            'technique_id' => 'required'
         ];
     }
 }

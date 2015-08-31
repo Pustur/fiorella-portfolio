@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function(){
-    return 'This is the home page'; // Temp
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
-    Route::get('/', function(){
-        return 'This is the ADMIN page'; // Temp
-    });
+    Route::get('/', ['as' => 'admin.index', 'uses' => 'PagesController@admin']);
     Route::resource('works', 'WorksController');
 });
 

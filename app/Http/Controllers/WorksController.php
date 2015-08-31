@@ -5,6 +5,7 @@ namespace Fiorella\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Fiorella\Work;
+use Fiorella\Technique;
 use Fiorella\Http\Requests\WorksRequest;
 use Fiorella\Http\Controllers\Controller;
 
@@ -40,7 +41,11 @@ class WorksController extends Controller
      */
     public function store(WorksRequest $request)
     {
+        $request->merge(['technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id)]);
         Work::create($request->all());
+
+        session()->flash('flash-message', 'Lavoro creato con successo!');
+
         return redirect(route('admin.works.index'));
     }
 
@@ -78,8 +83,12 @@ class WorksController extends Controller
      */
     public function update(WorksRequest $request, $slug)
     {
+        $request->merge(['technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id)]);
         $work = Work::where('slug', '=', $slug)->firstOrFail();
         $work->fill($request->all())->save();
+
+        session()->flash('flash-message', 'Lavoro modificato con successo!');
+
         return redirect(route('admin.works.show', $slug));
     }
 
@@ -93,6 +102,25 @@ class WorksController extends Controller
     {
         $work = Work::where('slug', '=', $slug)->firstOrFail();
         $work->delete();
+
+        session()->flash('flash-message', 'Lavoro eliminato con successo!');
+
         return redirect(route('admin.works.index'));
+    }
+
+    private function CreateNewTechniqueIfExists($technique_id)
+    {
+        // $technique_id might be a real id but could also be a string with the new technique name!
+        if(!is_numeric($technique_id)){
+            $technique = Technique::where("name", "=", $technique_id)->first();
+
+            if(!$technique){
+                $technique = Technique::create(['name' => $technique_id]);
+            }
+
+            $technique_id = $technique->id;
+        }
+
+        return $technique_id;
     }
 }

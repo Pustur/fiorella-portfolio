@@ -10,7 +10,8 @@ class Work extends Model
     protected $table = "works";
     protected $fillable = [
     	"title",
-    	"body",
+        "size",
+        "technique_id",
     	"image"
     ];
 
@@ -24,5 +25,10 @@ class Work extends Model
     	if(!$this->slug){
     		$this->attributes['slug'] = Str::slug($title);
     	}
+    }
+
+    public function technique()
+    {
+        return $this->belongsTo('Fiorella\Technique');
     }
 }
