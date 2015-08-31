@@ -1,20 +1,34 @@
-@extends('master', [$title = $work->title])
+@extends('admin', [$title = $work->title])
 
 @section('content')
-	<a href="{{ route('admin.works.index') }}">Torna a tutti i lavori</a>
-	<h1>{{ $work->title }}</h1>
-	<p>{!! nl2br(e($work->body)) !!}</p>
-	<strong>{{ $work->image }}</strong>
+@include('partials.breadcrumbs', $breadcrumbs = [
+	['link' => route('admin.index'),       'text' => 'Sezione amministrativa'],
+	['link' => route('admin.works.index'), 'text' => 'Lavori'],
+	['link' => '',                         'text' => $work->title]
+])
+
 	<hr>
-	<div style="font-family: monospace;">
-		<p>Created: {{ $work->created_at->format('d/m/Y H:i:s') }} <em>({{ $work->created_at->diffForHumans() }})</em></p>
+
+	<h3>{{ $work->title }}</h3>
+	<p><b>Dimensioni:</b> {{ $work->size }}</p>
+	<p><b>Tecnica:</b> {{ $work->technique->name }}</p>
+	<a href="http://lorempixel.com/1000/750">
+		<img class="full-width" src="http://lorempixel.com/1000/400" alt="image">
+	</a>
+
+	<hr>
+
+	<div class="timestamps">
+		<p>Creato: {{ $work->created_at->format('d/m/Y H:i:s') }} <em>({{ $work->created_at->diffForHumans() }})</em></p>
 		@if($work->created_at != $work->updated_at)
-			<p>Updated: {{ $work->updated_at->format('d/m/Y H:i:s') }} <em>({{ $work->updated_at->diffForHumans() }})</em></p>
+			<p>Aggiornato: {{ $work->updated_at->format('d/m/Y H:i:s') }} <em>({{ $work->updated_at->diffForHumans() }})</em></p>
 		@endif
 	</div>
+
 	<hr>
-	<a href="{{ route('admin.works.edit', $work->slug) }}">Modifica</a>
-	{!! Form::open(['method' => 'DELETE', 'route' => ['admin.works.destroy', $work->slug]]); !!}
-	{!! Form::submit('Elimina'); !!}
+
+	<a class="button" href="{{ route('admin.works.edit', $work->slug) }}">Modifica</a>
+	{!! Form::open(['method' => 'DELETE', 'route' => ['admin.works.destroy', $work->slug], 'class' => 'inline', 'onsubmit' => 'return confirm("Sei sicuro di voler eliminare questo elemento?");']); !!}
+	{!! Form::submit('Elimina', ['class' => 'button button-danger']); !!}
 	{!! Form::close(); !!}
 @stop

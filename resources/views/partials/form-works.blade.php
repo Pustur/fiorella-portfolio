@@ -1,10 +1,17 @@
-{!! Form::label('title', 'Titolo: ') !!}
-{!! Form::text('title') !!}
-
-{!! Form::label('body', 'Descrizione: ') !!}
-{!! Form::textarea('body') !!}
-
-{!! Form::label('image', 'Immagine: ') !!}
-{!! Form::text('image') !!}
-
-{!! Form::submit($submitText) !!}
+<div>
+    {!! Form::label('title', 'Titolo: ') !!}
+    {!! Form::text('title') !!}
+</div>
+<div>
+    {!! Form::label('size', 'Dimensione: ') !!}
+    {!! Form::text('size') !!}
+</div>
+<div>
+    {!! Form::label('technique_id', 'Tecnica: ') !!}
+    {!! Form::select('technique_id', $techniqueList, (isset($work->technique->id) ? $work->technique->id : null), ['id' => 'select2']) !!}
+</div>
+<div>
+    {!! Form::label('image', 'Immagine: ') !!}
+    {!! Form::file('image') !!}
+</div>
+{!! Form::submit($submitText, ['class' => 'button button-primary']) !!}

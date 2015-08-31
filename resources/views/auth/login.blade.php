@@ -1,19 +1,21 @@
-<form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+@extends('admin', [$title = "Login"])
 
-@include('partials.errors')
+@section('content')
+    {!! Form::open(['method' => 'POST', 'url' => '/auth/login']) !!}
+        <div>
+            {!! Form::label('email', 'Email') !!}
+            {!! Form::text('email', old('email')) !!}
+        </div>
+        <div>
+            {!! Form::label('password', 'Password') !!}
+            {!! Form::password('password') !!}
+        </div>
+        <div>
+            {!! Form::checkbox('remember') !!}
+            {!! Form::label('remember', 'Remember me', ['class' => 'inline']) !!}
+        </div>
+        {!! Form::submit('Login', ['class' => 'button-primary']) !!}
+    {!! Form::close() !!}
+
+    @include('partials.errors')
+@stop

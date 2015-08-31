@@ -1,5 +1,5 @@
 @if($errors->any())
-    <ul>
+    <ul class="panel panel-danger form-errors">
         @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach

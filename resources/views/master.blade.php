@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="it">
 	<head>
-		<meta charset="UTF-8">
-		<title>{{ isset($title) ? $title . ' | Portfolio' : 'Portfolio' }}</title>
+		@include('partials.meta')
 	</head>
 	<body>
 		@yield('content')
+		@yield('footer')
 	</body>
 </html>
