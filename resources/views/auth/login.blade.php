@@ -14,7 +14,7 @@
             {!! Form::checkbox('remember') !!}
             {!! Form::label('remember', 'Remember me', ['class' => 'inline']) !!}
         </div>
-        {!! Form::submit('Login', ['class' => 'button-primary']) !!}
+        {!! Form::submit('Login', ['class' => 'button button-primary']) !!}
     {!! Form::close() !!}
 
     @include('partials.errors')

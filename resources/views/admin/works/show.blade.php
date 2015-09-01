@@ -1,11 +1,11 @@
 @extends('admin', [$title = $work->title])
 
 @section('content')
-@include('partials.breadcrumbs', $breadcrumbs = [
-	['link' => route('admin.index'),       'text' => 'Sezione amministrativa'],
-	['link' => route('admin.works.index'), 'text' => 'Lavori'],
-	['link' => '',                         'text' => $work->title]
-])
+	@include('partials.breadcrumbs', $breadcrumbs = [
+		['link' => route('admin.index'),       'text' => 'Sezione amministrativa'],
+		['link' => route('admin.works.index'), 'text' => 'Lavori'],
+		['link' => '',                         'text' => $work->title]
+	])
 
 	<hr>
 
