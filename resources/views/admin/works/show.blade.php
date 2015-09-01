@@ -12,8 +12,8 @@
 	<h3>{{ $work->title }}</h3>
 	<p><b>Dimensioni:</b> {{ $work->size }}</p>
 	<p><b>Tecnica:</b> {{ $work->technique->name }}</p>
-	<a href="http://lorempixel.com/1000/750">
-		<img class="full-width" src="http://lorempixel.com/1000/400" alt="image">
+	<a href="/img/lavori/{{ $work->image }}">
+		<img src="/img/lavori/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
 	</a>
 
 	<hr>

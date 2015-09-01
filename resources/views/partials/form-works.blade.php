@@ -11,7 +11,7 @@
     {!! Form::select('technique_id', $techniqueList, (isset($work->technique->id) ? $work->technique->id : null), ['id' => 'select2']) !!}
 </div>
 <div>
-    {!! Form::label('image', 'Immagine: ') !!}
-    {!! Form::file('image') !!}
+    {!! Form::label('imageFile', 'Immagine: ') !!}
+    {!! Form::file('imageFile') !!}
 </div>
 {!! Form::submit($submitText, ['class' => 'button button-primary']) !!}

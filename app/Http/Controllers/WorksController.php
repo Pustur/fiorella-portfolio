@@ -3,14 +3,19 @@
 namespace Fiorella\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use Fiorella\Work;
 use Fiorella\Technique;
-use Fiorella\Http\Requests\WorksRequest;
 use Fiorella\Http\Controllers\Controller;
 
 class WorksController extends Controller
 {
+    private $commonValidationRules = [
+        'size' => 'required',
+        'technique_id' => 'required'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,7 @@ class WorksController extends Controller
      */
     public function create()
     {
-        $submitText = "Aggiungi lavoro";
+        $submitText = 'Aggiungi lavoro';
         return view('admin.works.create', compact('submitText'));
     }
 
@@ -39,9 +44,19 @@ class WorksController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(WorksRequest $request)
+    public function store(Request $request)
     {
-        $request->merge(['technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id)]);
+        $rules = array_merge($this->commonValidationRules, [
+            'title' => 'required|unique:works,title',
+            'imageFile' => 'required|image'
+        ]);
+        $this->validate($request, $rules);
+
+        $request->merge([
+            'technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id),
+            'image' => $this->SaveImage($request->imageFile, $request->title)
+        ]);
+
         Work::create($request->all());
 
         session()->flash('flash-message', 'Lavoro creato con successo!');
@@ -70,7 +85,7 @@ class WorksController extends Controller
     public function edit($slug)
     {
         $work = Work::where('slug', '=', $slug)->firstOrFail();
-        $submitText = "Modifica lavoro";
+        $submitText = 'Modifica lavoro';
         return view('admin.works.edit', compact('work', 'submitText'));
     }
 
@@ -81,10 +96,22 @@ class WorksController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(WorksRequest $request, $slug)
+    public function update(Request $request, $slug)
     {
-        $request->merge(['technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id)]);
+        $rules = array_merge($this->commonValidationRules, [
+            'title' => 'required',
+            'imageFile' => 'image'
+        ]);
+        $this->validate($request, $rules);
+
         $work = Work::where('slug', '=', $slug)->firstOrFail();
+
+        if($request->hasFile('imageFile')){
+            $this->DeletePreviousImages($work->image);
+            $request->merge(['image' => $this->SaveImage($request->imageFile, $request->title)]);
+        }
+
+        $request->merge(['technique_id' => $this->CreateNewTechniqueIfExists($request->technique_id)]);
         $work->fill($request->all())->save();
 
         session()->flash('flash-message', 'Lavoro modificato con successo!');
@@ -101,6 +128,7 @@ class WorksController extends Controller
     public function destroy($slug)
     {
         $work = Work::where('slug', '=', $slug)->firstOrFail();
+        $this->DeletePreviousImages($work->image);
         $work->delete();
 
         session()->flash('flash-message', 'Lavoro eliminato con successo!');
@@ -112,7 +140,7 @@ class WorksController extends Controller
     {
         // $technique_id might be a real id but could also be a string with the new technique name!
         if(!is_numeric($technique_id)){
-            $technique = Technique::where("name", "=", $technique_id)->first();
+            $technique = Technique::where('name', '=', $technique_id)->first();
 
             if(!$technique){
                 $technique = Technique::create(['name' => $technique_id]);
@@ -122,5 +150,34 @@ class WorksController extends Controller
         }
 
         return $technique_id;
+    }
+
+    private function SaveImage($img, $title)
+    {
+        $imagePath = Str::slug($title) . '.' . $img->guessExtension();
+        $publicPath = public_path() . '/img/lavori/';
+
+        $image = \Image::make($img);
+
+        $image->save($publicPath . $imagePath);
+
+        $thumbnailWidth = 400;
+        if($image->width() > $thumbnailWidth){
+            $image = $image->resize($thumbnailWidth, null, function($constraint){
+                $constraint->aspectRatio();
+            });
+        }
+
+        $image->save($publicPath . 'thumbnail-' . $imagePath);
+
+        return $imagePath;
+    }
+
+    private function DeletePreviousImages($oldImage)
+    {
+        $publicPath = public_path() . '/img/lavori/';
+
+        @unlink($publicPath . $oldImage);
+        @unlink($publicPath . 'thumbnail-' . $oldImage);
     }
 }
