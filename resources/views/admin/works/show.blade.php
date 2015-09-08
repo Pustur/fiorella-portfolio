@@ -17,7 +17,7 @@
 	<p><b>Dimensioni:</b> {{ $work->size }}</p>
 	<p><b>Tecnica:</b> {{ $work->technique->name }}</p>
 	<a href="/img/lavori/{{ $work->image }}">
-		<img src="/img/lavori/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
+		<img class="img-responsive" src="/img/lavori/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
 	</a>
 
 	<hr>
