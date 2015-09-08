@@ -1,0 +1,31 @@
+@media(max-width: $sm-max)
+    .container[data-columns]::before
+    	content: '1 .column.one'
+
+@media(min-width: $md) and (max-width: $md-max)
+    .container[data-columns]::before
+    	content: '2 .column.two'
+
+@media(min-width: $lg)
+    .container[data-columns]::before
+    	content: '3 .column.three'
+
+.column
+    float: left
+
+    &.one
+        width: 100%
+
+    &.two
+        width: calc((100% / 2) - (#{$gutter} / 2))
+        margin-right: $gutter
+
+        &:last-child
+            margin-right: 0
+
+    &.three
+        width: calc((100% / 3) - (#{$gutter} / 3 * 2))
+        margin-right: $gutter
+
+        &:last-child
+            margin-right: 0

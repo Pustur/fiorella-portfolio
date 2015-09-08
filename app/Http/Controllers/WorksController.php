@@ -155,7 +155,7 @@ class WorksController extends Controller
     private function SaveImage($img, $title)
     {
         $imagePath = Str::slug($title) . '.' . $img->guessExtension();
-        $publicPath = public_path() . '/img/lavori/';
+        $publicPath = public_path() . '/img/works/';
 
         $image = \Image::make($img);
 
@@ -175,7 +175,7 @@ class WorksController extends Controller
 
     private function DeletePreviousImages($oldImage)
     {
-        $publicPath = public_path() . '/img/lavori/';
+        $publicPath = public_path() . '/img/works/';
 
         @unlink($publicPath . $oldImage);
         @unlink($publicPath . 'thumbnail-' . $oldImage);

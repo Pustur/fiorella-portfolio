@@ -1,0 +1,70 @@
+.container
+    max-width: $lg
+    margin: 0 auto
+
+.home-title
+    text-align: center
+
+section.gallery
+    padding: ($gutter * 4) $gutter
+    background-image: url(/img/general/floreal-bg.jpg)
+
+    .work
+        display: block
+        position: relative
+        margin-bottom: $gutter
+        text-decoration: none
+        overflow: hidden
+
+        &:last-child
+            margin-bottom: 0
+
+        img
+            vertical-align: top /* fix weird border http://stackoverflow.com/questions/1383048/html-css-weird-invisible-margin-below-pictures */
+            width: 100%
+
+        .work-overlay
+            background-color: rgba(black, 0)
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+            transition: background-color 0.4s ease
+            display: flex
+            flex-wrap: wrap
+            align-items: stretch
+
+            h2, div
+                flex-basis: 100%
+                color: white
+                text-align: center
+                position: relative
+
+            h2
+                align-self: flex-end
+                font-size: rem_calc(28)
+                opacity: 0
+                transform: scale(0.8)
+                transition: all 0.3s ease-in-out
+
+            div
+                opacity: 0
+                transform: scale(0.8)
+                transition: all 0.3s ease-in-out
+
+        @media(min-width: $lg)
+            &:hover .work-overlay
+                background-color: rgba(black, 0.5)
+
+                h2
+                    opacity: 1
+                    transform: scale(1)
+
+                div
+                    opacity: 1
+                    transform: scale(1)
+
+@media(min-width: $lg)
+    section.gallery
+        padding: ($gutter * 4) 0

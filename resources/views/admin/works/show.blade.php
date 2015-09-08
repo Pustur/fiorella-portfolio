@@ -16,8 +16,8 @@
 	<h3>{{ $work->title }}</h3>
 	<p><b>Dimensioni:</b> {{ $work->size }}</p>
 	<p><b>Tecnica:</b> {{ $work->technique->name }}</p>
-	<a href="/img/lavori/{{ $work->image }}">
-		<img class="img-responsive" src="/img/lavori/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
+	<a href="/img/works/{{ $work->image }}">
+		<img class="img-responsive" src="/img/works/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
 	</a>
 
 	<hr>
