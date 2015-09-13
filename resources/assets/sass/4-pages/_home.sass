@@ -68,3 +68,27 @@ section.gallery
 @media(min-width: $lg)
     section.gallery
         padding: ($gutter * 4) 0
+
+[id^="lightbox-"]
+    display: none
+
+.featherlight
+    [id^="lightbox-"]
+        img
+            vertical-align: top
+            max-width: 100%
+            max-height: calc(90vh - 140px)
+
+        & > h2
+            margin: ($gutter / 2) 0
+            color: $primary
+
+        & > p
+            margin-bottom: ($gutter / 2)
+            color: $gray-medium
+
+            & > strong
+                color: $gray-dark
+
+            &:last-child
+                margin-bottom: 0
