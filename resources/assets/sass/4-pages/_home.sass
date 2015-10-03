@@ -1,20 +1,56 @@
 .container
     max-width: $lg
     margin: 0 auto
+    padding: 0 $gutter
 
-.home-title
-    text-align: center
+header.header,
+section.about
+    padding: ($gutter * 4) 0
+    background:
+        image: url(/img/general/flower-bg.jpg)
+        size: cover
+        position: center
+        color: $primary
+
+header.header
+    .home-title
+        text-align: center
+        margin: 0
+        color: white
 
 section.gallery
-    padding: ($gutter * 4) $gutter
-    background-image: url(/img/general/floreal-bg.jpg)
+    padding: ($gutter * 2) 0 ($gutter * 4) 0
+    background-image: url(/img/general/gallery-bg.png)
+
+    .filters
+        margin-bottom: ($gutter * 2)
+
+        & > .filter
+            display: inline-block
+            background-color: white
+            padding: ($gutter / 2) $gutter
+            border-radius: 4px
+            border: 0
+            box-shadow: inset 0 -3px 0 $gray-lighter, 0 0 1px rgba(black, 0.1)
+            color: $gray-light
+            margin: 0 ($gutter / 2) ($gutter / 2) 0
+
+            &.active
+                box-shadow: inset 0 -3px 0 $primary, 0 0 1px rgba(black, 0.1)
+                color: $primary
+
+            &:focus
+                outline: none
 
     .work
         display: block
         position: relative
         margin-bottom: $gutter
         text-decoration: none
+        border-radius: 4px
+        border: 4px solid white
         overflow: hidden
+        box-shadow: 1px 1px 5px rgba(black, 0.1)
 
         &:last-child
             margin-bottom: 0
@@ -65,10 +101,6 @@ section.gallery
                     opacity: 1
                     transform: scale(1)
 
-@media(min-width: $lg)
-    section.gallery
-        padding: ($gutter * 4) 0
-
 [id^="lightbox-"]
     display: none
 
@@ -92,3 +124,46 @@ section.gallery
 
             &:last-child
                 margin-bottom: 0
+
+section.about
+    color: white
+
+    h2
+        text-align: center
+        color: white
+
+    .about-me
+        display: flex
+        flex-wrap: wrap
+        flex-direction: column
+
+    .portrait
+        align-self: center
+        padding: $gutter
+        text-align: center
+
+        & > img
+            border-radius: 999px
+            border: 3px solid white
+            box-shadow: 1px 3px 10px rgba(black, 0.2)
+            max-width: 200px
+
+    .biography
+        text-align: center
+
+        & > p
+            margin: $gutter 0 0 0
+
+    @media(min-width: $md)
+        .about-me
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+
+        .portrait
+            flex: 1
+            order: 1
+
+        .biography
+            flex: 3
+            text-align: left

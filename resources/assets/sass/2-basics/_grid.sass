@@ -1,12 +1,8 @@
 @media(max-width: $sm-max)
     .container[data-columns]::before
-    	content: '1 .column.one'
-
-@media(min-width: $md) and (max-width: $md-max)
-    .container[data-columns]::before
     	content: '2 .column.two'
 
-@media(min-width: $lg)
+@media(min-width: $md)
     .container[data-columns]::before
     	content: '3 .column.three'
 
