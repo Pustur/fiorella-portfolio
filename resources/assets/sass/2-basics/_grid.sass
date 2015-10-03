@@ -1,27 +1,14 @@
+.work
+    display: block
+    float: left
+    margin-right: $gutter
+
 @media(max-width: $sm-max)
-    .container[data-columns]::before
-    	content: '2 .column.two'
+    .work
+        width: calc(100% / #{$grid-items-sm} - #{$gutter})
+        padding-bottom: calc(100% / #{$grid-items-sm} - #{$gutter})
 
 @media(min-width: $md)
-    .container[data-columns]::before
-    	content: '3 .column.three'
-
-.column
-    float: left
-
-    &.one
-        width: 100%
-
-    &.two
-        width: calc((100% / 2) - (#{$gutter} / 2))
-        margin-right: $gutter
-
-        &:last-child
-            margin-right: 0
-
-    &.three
-        width: calc((100% / 3) - (#{$gutter} / 3 * 2))
-        margin-right: $gutter
-
-        &:last-child
-            margin-right: 0
+    .work
+        width: calc(100% / #{$grid-items-md} - #{$gutter})
+        padding-bottom: calc(100% / #{$grid-items-md} - #{$gutter})

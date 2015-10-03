@@ -15,11 +15,12 @@
                         <button class="filter" data-filter=".technique-{{ $technique->id }}">{{ $technique->name }}</button>
                     @endforeach
                 </div>
+            @else
+                <div class="spacer"></div>
             @endif
-            <div id="container" class="clearfix container" data-columns>
+            <div id="container" class="container clearfix">
                 @foreach($works as $i => $work)
-                    <a class="work technique-{{ $work->technique->id }}" href="#" data-featherlight="#lightbox-{{ $i }}">
-                        <img src="/img/works/thumbnail-{{ $work->image }}" alt="{{ $work->title }}">
+                    <a class="work technique-{{ $work->technique->id }}" href="#" data-featherlight="#lightbox-{{ $i }}" style="background-image: url(/img/works/thumbnail-{{ $work->image }});">
                         <div class="work-overlay">
                             <h2>{{ $work->title }}</h2>
                             <div>{{ $work->technique->name }}</div>
@@ -59,10 +60,9 @@
 @stop
 
 @section('footer')
-    <script src="/js/salvattore.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/js/featherlight.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
     <script>
         $('#container').mixItUp({
             selectors: {

@@ -161,11 +161,19 @@ class WorksController extends Controller
 
         $image->save($publicPath . $imagePath);
 
-        $thumbnailWidth = 400;
-        if($image->width() > $thumbnailWidth){
-            $image = $image->resize($thumbnailWidth, null, function($constraint){
-                $constraint->aspectRatio();
-            });
+        $thumbnailSize = 400;
+        if($image->width() > $thumbnailSize){
+            if($image->width() <= $image->height()){
+                $image = $image->resize($thumbnailSize, null, function($constraint){
+                    $constraint->aspectRatio();
+                });
+            }
+            else{
+                $image = $image->resize(null, $thumbnailSize, function($constraint){
+                    $constraint->aspectRatio();
+                });
+            }
+            $image = $image->crop($thumbnailSize, $thumbnailSize);
         }
 
         $image->save($publicPath . 'thumbnail-' . $imagePath);
