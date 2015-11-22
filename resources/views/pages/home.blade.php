@@ -18,7 +18,7 @@
             @else
                 <div class="spacer"></div>
             @endif
-            <div id="container" class="container clearfix">
+            <div id="container" class="container gallery-container">
                 @foreach($works as $i => $work)
                     <a class="work technique-{{ $work->technique->id }}" href="#" data-featherlight="#lightbox-{{ $i }}" style="background-image: url(/img/works/thumbnail-{{ $work->image }});">
                         <div class="work-overlay">
@@ -27,6 +27,9 @@
                         </div>
                     </a>
                 @endforeach
+                @if(count($usedTechniques)%3 != 0)
+                    <div class="gap"></div>
+                @endif
             </div>
         @else
             <p class="no-margin text-center">Spiacenti, nessun lavoro trovato :(</p>
@@ -69,7 +72,7 @@
                 target: '.work'
             },
             layout: {
-                display: 'block'
+                display: 'inline-block'
             }
         });
     </script>

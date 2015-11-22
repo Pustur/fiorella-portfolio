@@ -1,14 +1,29 @@
-.work
-    display: block
-    float: left
-    margin-right: $gutter
+.gallery-container
+    padding: 2% 2% 0
+    text-align: justify
+    font-size: 0
 
-@media(max-width: $sm-max)
-    .work
-        width: calc(100% / #{$grid-items-sm} - #{$gutter})
-        padding-bottom: calc(100% / #{$grid-items-sm} - #{$gutter})
+    &::after
+        content: ''
+        display: inline-block
+        width: 100%
 
-@media(min-width: $md)
+    .work,
+    .gap
+        display: inline-block
+        width: 48.4%
+
     .work
-        width: calc(100% / #{$grid-items-md} - #{$gutter})
-        padding-bottom: calc(100% / #{$grid-items-md} - #{$gutter})
+        text-align: left
+        margin-bottom: 2%
+        display: none
+
+        &::before
+            content: ''
+            display: inline-block
+            padding-top: 100%
+
+    @media (min-width: $md)
+        .work,
+        .gap
+            width: 32.2%
