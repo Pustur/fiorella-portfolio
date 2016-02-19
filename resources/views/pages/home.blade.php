@@ -27,7 +27,7 @@
                         </div>
                     </a>
                 @endforeach
-                @if(count($usedTechniques)%3 != 0)
+                @if(count($works)%3-2 == 0)
                     <div class="gap"></div>
                 @endif
             </div>
@@ -55,7 +55,10 @@
                     <img class="img-responsive" src="//placehold.it/400x400" alt="Ritratto Fiorella">
                 </div>
                 <div class="biography">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam doloremque veniam, ratione quas dolorem vero modi, sequi laudantium blanditiis amet porro consequatur. Doloremque quia maxime quibusdam numquam distinctio modi asperiores.</p>
+                    <p>Sin dai tempi della scuola amavo disegnare e i lavori di bricolage mi stimolavano l’estro creativo.<br><br>
+Frequentai poi diversi corsi: pittura su porcellana e su seta, mosaico, modellaggio della ceramica e creazione di gioielli in argento.<br>
+Decisi poi di provare la pittura su tela e così seguii dei corsi di pittura ad olio presso alcuni artisti ticinesi.<br><br>
+Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre tecniche ed altri materiali.</p>
                 </div>
             </div>
         </div>
