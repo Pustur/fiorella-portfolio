@@ -151,7 +151,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
         <div class="container">
             <h2>Contatto</h2>
             <p class="info">Per qualsiasi domanda, o anche solo per una chiacchierata, puoi contattarmi usando il form sottostante o, se preferisci, all’email <a href="mailto:fiorelani64@gmail.com">fiorelani64@gmail.com</a></p>
-            {!! Form::model($show, ['method' => 'POST', 'route' => 'email', 'style' => 'text-align: center']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'email', 'style' => 'text-align: center']) !!}
                 <div>
                     {!! Form::label('nome', 'Nome: ', ['class' => 'sr-only']) !!}
                     {!! Form::text('name', null, ['placeholder' => 'Il tuo nome']) !!}
