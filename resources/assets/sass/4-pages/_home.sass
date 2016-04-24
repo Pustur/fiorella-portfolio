@@ -1,3 +1,6 @@
+body
+    background-image: url(/img/general/gallery-bg.png)
+
 .container
     max-width: $lg
     margin: 0 auto
@@ -7,12 +10,14 @@ header.header,
 section.about
     padding: ($gutter * 4) 0
     background:
-        image: url(/img/general/flower-bg.jpg)
+        image: url(/img/general/fiori-header.jpg)
         size: cover
-        position: center
         color: $primary
 
 header.header
+    padding: ($gutter * 5) 0
+    background-position: 50% 30%
+
     .home-title
         text-align: center
         margin: 0
@@ -20,7 +25,6 @@ header.header
 
 section.gallery
     padding: ($gutter * 2) 0 ($gutter * 3) 0
-    background-image: url(/img/general/gallery-bg.png)
 
     .filters
         margin-bottom: ($gutter * 2)
@@ -125,6 +129,7 @@ section.gallery
                 margin-bottom: 0
 
 section.about
+    background-image: linear-gradient(rgba(black, 0.3) 0%, rgba(black, 0.3) 100%), url(/img/general/fiori-header.jpg)
     color: white
 
     h2
@@ -149,6 +154,7 @@ section.about
 
     .biography
         text-align: center
+        font-size: 18px
 
         & > p
             margin: $gutter 0 0 0
@@ -166,3 +172,107 @@ section.about
         .biography
             flex: 3 1 auto
             text-align: left
+
+section.shows
+    padding: ($gutter * 4) 0 ($gutter * 4) 0
+
+    h2
+        text-align: center
+        color: $primary
+
+    .esposizioni
+        list-style: none
+        margin: 0
+        padding: 0
+
+        li+li
+            margin-top: 20px
+
+        .date
+            float: left
+            width: 130px
+            background-color: white
+            box-shadow: 0 2px 6px rgba(black, 0.1)
+            text-align: center
+            padding: 14px 0
+
+            .day,
+            .month
+                font-size: 32px
+
+            .year
+                font-size: 45px
+                display: inline-block
+                margin-top: 4px
+
+            .month
+                color: $primary
+
+        .info
+            padding-left: 160px
+
+            .title
+                color: #666
+                padding-top: 20px
+
+            .place
+                font-size: 20px
+
+        @media(max-width: $sm-max)
+            li
+                text-align: center
+                margin-top: 40px !important
+
+                .date
+                    float: none
+                    display: inline-block
+
+                .info
+                    padding-left: 0
+
+section.contact
+    padding: ($gutter * 4) 0 ($gutter * 4) 0
+    background-color: #333
+    background:
+        image: url(/img/general/footer-lodyas.png)
+        repeat: repeat
+    color: #aaa
+
+    .container
+        max-width: 640px
+
+    .info
+        text-align: center
+        margin-bottom: 40px
+        line-height: 1.5
+
+    h2
+        text-align: center
+        color: white
+
+    input,
+    textarea
+        border: 0
+
+    textarea:focus
+        border: 1px solid $primary
+
+.email-sent
+    position: fixed
+    color: $success-darker
+    background-color: $success-lighter
+    border: 1px solid $success-light
+    padding: $gutter
+    top: 20px
+    left: 20px
+    right: 20px
+    font-size: 20px
+    border-radius: 4px
+
+    .close
+        text-transform: uppercase
+        background-color: white
+        border: 1px solid $success-light
+        float: right
+        padding: 6px 12px
+        border-radius: 4px
