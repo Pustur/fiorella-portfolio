@@ -50,6 +50,10 @@
 
 @extends('master', [$title = 'Home'])
 
+@section('meta')
+    <meta name="description" content="Fiorella Giuliani è un'artista e pittrice, presenta le sue opere in questo spazio online.">
+@stop
+
 @section('content')
     @if (session('emailSent'))
         <div class="email-sent">
@@ -154,7 +158,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
             {!! Form::open(['method' => 'POST', 'route' => 'email', 'style' => 'text-align: center']) !!}
                 <div>
                     {!! Form::label('nome', 'Nome: ', ['class' => 'sr-only']) !!}
-                    {!! Form::text('name', null, ['placeholder' => 'Il tuo nome']) !!}
+                    {!! Form::text('name', null, ['id' => 'nome', 'placeholder' => 'Il tuo nome']) !!}
                 </div>
                 <div>
                     {!! Form::label('email', 'Email: ', ['class' => 'sr-only']) !!}
@@ -162,7 +166,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
                 </div>
                 <div>
                     {!! Form::label('messaggio', 'Messaggio: ', ['class' => 'sr-only']) !!}
-                    {!! Form::textarea('text', null, ['placeholder' => 'Messaggio']) !!}
+                    {!! Form::textarea('text', null, ['id' => 'messaggio', 'placeholder' => 'Messaggio']) !!}
                 </div>
                 {!! Form::submit('Invia messaggio', ['class' => 'button button-primary']) !!}
         	{!! Form::close() !!}

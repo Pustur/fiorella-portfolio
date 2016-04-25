@@ -35,7 +35,7 @@ gulp.task('css', function(){
 		browsers: ['last 5 versions']
 	}))
 	.pipe(config.production ? util.noop() : sourcemaps.write())
-	.pipe(gulp.dest(config.dest + 'css'))
+	.pipe(gulp.dest(config.dest + 'css'));
 });
 
 gulp.task('js', function(){
@@ -43,7 +43,7 @@ gulp.task('js', function(){
 	.pipe(plumber())
 	.pipe(concat('app.min.js'))
 	.pipe(config.production ? uglify() : util.noop())
-	.pipe(gulp.dest(config.dest + 'js'))
+	.pipe(gulp.dest(config.dest + 'js'));
 });
 
 gulp.task('img', function(){
