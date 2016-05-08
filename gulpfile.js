@@ -39,7 +39,15 @@ gulp.task('css', function(){
 });
 
 gulp.task('js', function(){
-	gulp.src([config.src + 'js/vendor/jquery.js', config.src + 'js/vendor/select2.js'])
+	gulp.src([
+        config.src + 'js/vendor/jquery.js',
+        config.src + 'js/vendor/select2.js',
+        config.src + 'js/vendor/sweetalert.js',
+        config.src + 'js/vendor/mixitup.js',
+        config.src + 'js/vendor/detect-swipe.js',
+        config.src + 'js/vendor/featherlight.js',
+        config.src + 'js/vendor/featherlight-gallery.js'
+    ])
 	.pipe(plumber())
 	.pipe(concat('app.min.js'))
 	.pipe(config.production ? uglify() : util.noop())

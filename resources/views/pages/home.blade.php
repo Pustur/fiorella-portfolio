@@ -175,9 +175,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
 @stop
 
 @section('footer')
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="/js/featherlight.min.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script src="/js/app.min.js"></script>
     <script>
         $('#container').mixItUp({
             selectors: {
@@ -187,6 +185,9 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
                 display: 'inline-block'
             }
         });
+
+        $('a.work').featherlightGallery();
+
         var emailSent = $('.email-sent');
         emailSent.find('.close').on('click', function(e){
             emailSent.remove();
