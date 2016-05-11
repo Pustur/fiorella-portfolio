@@ -112,7 +112,7 @@
             <h2>Su di me</h2>
             <div class="about-me">
                 <div class="portrait">
-                    <img class="img-responsive" src="//placehold.it/400x400" alt="Ritratto Fiorella">
+                    <img class="img-responsive" src="//placehold.it/400/400" alt="Ritratto Fiorella">
                 </div>
                 <div class="biography">
                     <p>Sin dai tempi della scuola amavo disegnare e i lavori di bricolage mi stimolavano l’estro creativo.<br><br>
@@ -151,10 +151,10 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
         <div class="container">
             <h2>Contatto</h2>
             <p class="info">Per qualsiasi domanda, o anche solo per una chiacchierata, puoi contattarmi usando il form sottostante o, se preferisci, all’email <a href="mailto:fiorelani64@gmail.com">fiorelani64@gmail.com</a></p>
-            {!! Form::model($show, ['method' => 'POST', 'route' => 'email', 'style' => 'text-align: center']) !!}
+            {!! Form::open(['method' => 'POST', 'route' => 'email', 'style' => 'text-align: center']) !!}
                 <div>
                     {!! Form::label('nome', 'Nome: ', ['class' => 'sr-only']) !!}
-                    {!! Form::text('name', null, ['placeholder' => 'Il tuo nome']) !!}
+                    {!! Form::text('name', null, ['id' => 'nome', 'placeholder' => 'Il tuo nome']) !!}
                 </div>
                 <div>
                     {!! Form::label('email', 'Email: ', ['class' => 'sr-only']) !!}
@@ -162,7 +162,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
                 </div>
                 <div>
                     {!! Form::label('messaggio', 'Messaggio: ', ['class' => 'sr-only']) !!}
-                    {!! Form::textarea('text', null, ['placeholder' => 'Messaggio']) !!}
+                    {!! Form::textarea('text', null, ['id' => 'messaggio', 'placeholder' => 'Messaggio']) !!}
                 </div>
                 {!! Form::submit('Invia messaggio', ['class' => 'button button-primary']) !!}
         	{!! Form::close() !!}
