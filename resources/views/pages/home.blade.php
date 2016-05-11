@@ -50,6 +50,19 @@
 
 @extends('master', [$title = 'Home'])
 
+@section('meta')
+    <meta name="description" content="Fiorella Giuliani è un'artista e pittrice, presenta le sue opere in questo spazio online.">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-77566858-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+@stop
+
 @section('content')
     @if (session('emailSent'))
         <div class="email-sent">
@@ -115,10 +128,10 @@
                     <img class="img-responsive" src="//placehold.it/400/400" alt="Ritratto Fiorella">
                 </div>
                 <div class="biography">
-                    <p>Sin dai tempi della scuola amavo disegnare e i lavori di bricolage mi stimolavano l’estro creativo.<br><br>
-Frequentai poi diversi corsi: pittura su porcellana e su seta, mosaico, modellaggio della ceramica e creazione di gioielli in argento.<br>
-Decisi poi di provare la pittura su tela e così seguii dei corsi di pittura ad olio presso alcuni artisti ticinesi.<br><br>
-Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre tecniche ed altri materiali.</p>
+                    <p>Sin dai tempi della scuola amavo disegnare e i lavori di bricolage mi stimolavano l’estro creativo.</p>
+                    <p>Frequentai poi diversi corsi: pittura su porcellana e su seta, mosaico, modellaggio della ceramica e creazione di gioielli in argento.</p>
+                    <p>Decisi poi di provare la pittura su tela e così seguii dei corsi di pittura ad olio presso alcuni artisti ticinesi.</p>
+                    <p>Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre tecniche ed altri materiali.</p>
                 </div>
             </div>
         </div>
@@ -171,9 +184,7 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
 @stop
 
 @section('footer')
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="/js/featherlight.min.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script src="/js/app.min.js"></script>
     <script>
         $('#container').mixItUp({
             selectors: {
@@ -183,6 +194,9 @@ Pur prediligendo la pittura ad olio, con gli anni ho sperimentato anche altre te
                 display: 'inline-block'
             }
         });
+
+        $('a.work').featherlightGallery();
+
         var emailSent = $('.email-sent');
         emailSent.find('.close').on('click', function(e){
             emailSent.remove();
