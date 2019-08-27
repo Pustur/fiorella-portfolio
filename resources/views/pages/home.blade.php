@@ -51,7 +51,7 @@
 @extends('master', [$title = 'Home'])
 
 @section('meta')
-    <meta name="description" content="Fiorella Giuliani è un'artista e pittrice, presenta le sue opere in questo spazio online.">
+    <meta name="description" content="Fiorella Giuliani Lanini è un'artista e pittrice, presenta le sue opere in questo spazio online.">
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -76,7 +76,7 @@
     @endif
     <header class="header">
         <div class="container">
-            <h1 class="home-title">Benvenuto su lellarte.ch</h1>
+            <h1 class="home-title">Fiorella Giuliani Lanini</h1>
         </div>
     </header>
     <section class="gallery">
@@ -125,7 +125,7 @@
             <h2>Su di me</h2>
             <div class="about-me">
                 <div class="portrait">
-                    <img class="img-responsive" src="//placehold.it/400/400" alt="Ritratto Fiorella">
+                    <img class="img-responsive" src="/img/general/fiorella-giuliani-lanini.jpg" alt="Ritratto Fiorella Giuliani Lanini">
                 </div>
                 <div class="biography">
                     <p>Sin dai tempi della scuola amavo disegnare e i lavori di bricolage mi stimolavano l’estro creativo.</p>
