@@ -1,11 +1,11 @@
-<title>{{ isset($title) ? $title . ' | Fiorella' : 'Fiorella' }}</title>
-<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Loris Bettazza">
+<meta name="author" content="Loris Bettazza, loriteck@yahoo.it">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <meta name="theme-color" content="#ffffff">
+<title>{{ isset($title) ? $title . ' | Fiorella Giuliani Lanini' : 'Fiorella Giuliani Lanini' }}</title>
 @yield('meta')
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
