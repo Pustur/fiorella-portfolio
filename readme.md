@@ -7,3 +7,6 @@ This is my first time using [Laravel](http://laravel.com/) and [GitHub](https://
 You can see it live at [lellarte.ch](http://lellarte.ch/)
 
 It's been a fun project, see ya on the next one 🍻
+
+## License
+[MIT](LICENSE)
